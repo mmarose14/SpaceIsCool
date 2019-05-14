@@ -1,12 +1,13 @@
 package com.spaceiscool.service
 
+import com.spaceiscool.BuildConfig
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
 object ApiManager {
 
     private const val SERVER_HOST = "https://api.nasa.gov"
-    const val API_KEY = "xPX3uoRAmKBdqyX5jMDK81lAycdpZfSJGSFgvUVa"
+    const val API_KEY = BuildConfig.API_KEY
 
     private var apiService: WebService
 
