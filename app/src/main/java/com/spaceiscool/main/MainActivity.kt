@@ -1,17 +1,15 @@
 package com.spaceiscool.main
 
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import com.spaceiscool.R
+import com.spaceiscool.base.BaseActivity
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : BaseActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
-        supportFragmentManager.beginTransaction()
-            .add(R.id.fragment_layout, MainFragment())
-            .commit()
+        displayFragment(R.id.fragment_layout, MainFragment())
     }
 }

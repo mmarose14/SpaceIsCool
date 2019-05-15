@@ -1,3 +1,6 @@
 <resources>
     <string name="app_name">SpaceIsCool</string>
+    <string name="mars_curiosity_photos">Mars Curiosity Photos</string>
+    <string name="mars_photos_button_text">Mars Photos</string>
+    <string name="neo_title">Browse Near-Earth-Objects</string>
 </resources>

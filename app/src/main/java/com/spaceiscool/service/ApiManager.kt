@@ -9,11 +9,11 @@ object ApiManager {
     private const val SERVER_HOST = "https://api.nasa.gov"
     const val API_KEY = BuildConfig.API_KEY
 
-    private var apiService: WebService
+    private var apiService: NASAWebService
 
     init {
         val retrofit = initRetrofit()
-        apiService = retrofit.create(WebService::class.java)
+        apiService = retrofit.create(NASAWebService::class.java)
     }
 
     private fun initRetrofit(): Retrofit {
@@ -24,7 +24,7 @@ object ApiManager {
                 .build()
     }
 
-    fun getDataService(): WebService {
+    fun getDataService(): NASAWebService {
         return apiService
     }
 
