@@ -38,6 +38,6 @@ class MarsPhotosFragment : BaseFragment(), MarsPhotosContract.View, MarsPhotosAd
     }
 
     override fun displayPhoto(photo: MarsPhotosData.Photo) {
-        startActivity(Intent(Intent.ACTION_VIEW, Uri.parse(photo.img_src)))
+        displayPhotoInBrowser(photo.img_src)
     }
 }
