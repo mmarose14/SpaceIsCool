@@ -1,5 +1,6 @@
 package com.spaceiscool.service
 
+import com.spaceiscool.data.APOD
 import com.spaceiscool.data.MarsPhotosData
 import com.spaceiscool.data.NEOResponse
 import retrofit2.Call
@@ -13,4 +14,7 @@ interface NASAWebService {
 
     @GET("mars-photos/api/v1/rovers/curiosity/photos")
     fun getMarsPhotos(@Query("api_key") apiKey: String, @Query("sol") sol: String = "1000"): Call<MarsPhotosData>
+
+    @GET("planetary/apod")
+    fun getAPOD(@Query("api_key") apiKey: String): Call<APOD>
 }

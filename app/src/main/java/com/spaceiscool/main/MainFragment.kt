@@ -10,6 +10,7 @@ import com.spaceiscool.R
 import com.spaceiscool.base.BaseFragment
 import com.spaceiscool.data.NearEarthObjectFull
 import com.spaceiscool.marsphotos.MarsPhotosActivity
+import com.spaceiscool.pictureoftheday.APODActivity
 import kotlinx.android.synthetic.main.fragment_main.*
 
 class MainFragment : BaseFragment(), MainPresenterContract.View {
@@ -32,6 +33,10 @@ class MainFragment : BaseFragment(), MainPresenterContract.View {
     private fun setupView() {
         button_mars_photos.setOnClickListener {
             startActivity(Intent(activity, MarsPhotosActivity::class.java))
+        }
+
+        button_apod.setOnClickListener {
+            startActivity(Intent(activity, APODActivity::class.java))
         }
     }
 
