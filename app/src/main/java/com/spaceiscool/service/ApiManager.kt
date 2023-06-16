@@ -1,6 +1,8 @@
 package com.spaceiscool.service
 
 import com.spaceiscool.BuildConfig
+import com.squareup.moshi.Moshi
+import com.squareup.moshi.kotlin.reflect.KotlinJsonAdapterFactory
 import retrofit2.Retrofit
 import retrofit2.converter.moshi.MoshiConverterFactory
 
@@ -18,9 +20,13 @@ object ApiManager {
 
     private fun initRetrofit(): Retrofit {
 
+        val moshi = Moshi.Builder()
+            .add(KotlinJsonAdapterFactory())
+            .build()
+
         return Retrofit.Builder()
                 .baseUrl(SERVER_HOST)
-                .addConverterFactory(MoshiConverterFactory.create())
+                .addConverterFactory(MoshiConverterFactory.create(moshi))
                 .build()
     }
 

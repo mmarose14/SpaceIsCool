@@ -6,46 +6,39 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.recyclerview.widget.LinearLayoutManager
-import com.spaceiscool.R
 import com.spaceiscool.base.BaseFragment
-import com.spaceiscool.data.NearEarthObjectFull
-import com.spaceiscool.marsphotos.MarsPhotosActivity
+import com.spaceiscool.databinding.FragmentMainBinding
 import com.spaceiscool.pictureoftheday.APODActivity
-import kotlinx.android.synthetic.main.fragment_main.*
 
-class MainFragment : BaseFragment(), MainPresenterContract.View {
-    private lateinit var presenter: MainPresenter
+class MainFragment : BaseFragment() {
+    private var _binding: FragmentMainBinding? = null
+    private val binding get() = _binding!!
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_main, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentMainBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
-        presenter = MainPresenter(this)
-        presenter.getNEOBrowse()
-
         setupView()
-
     }
 
     private fun setupView() {
-        button_mars_photos.setOnClickListener {
-            startActivity(Intent(activity, MarsPhotosActivity::class.java))
-        }
-
-        button_apod.setOnClickListener {
-            startActivity(Intent(activity, APODActivity::class.java))
+        binding.apply {
+            buttonApod.setOnClickListener {
+                startActivity(Intent(requireContext(), APODActivity::class.java))
+            }
         }
     }
 
-    override fun displayNEOs(near_earth_objects: List<NearEarthObjectFull.NearEarthObject>) {
-        context?.let {
-            val neoListAdapter = NeoBrowseAdapter(it, near_earth_objects)
-            neo_list.layoutManager = LinearLayoutManager(it)
-            neo_list.adapter = neoListAdapter
-        }
-
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

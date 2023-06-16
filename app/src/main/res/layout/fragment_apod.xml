@@ -3,65 +3,47 @@
         xmlns:android="http://schemas.android.com/apk/res/android"
         xmlns:app="http://schemas.android.com/apk/res-auto"
         xmlns:tools="http://schemas.android.com/tools"
-        android:layout_margin="16dp"
         android:layout_width="match_parent"
-        android:layout_height="match_parent">
+        android:layout_height="match_parent"
+        android:layout_margin="16dp">
 
-    <ProgressBar
-            android:id="@+id/progressBar"
-            style="?android:attr/progressBarStyle"
-            android:visibility="invisible"
-            android:layout_width="wrap_content"
+    <LinearLayout
+            android:orientation="vertical"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:indeterminate="true"
-            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/apod_title"/>
+            app:layout_constraintTop_toTopOf="parent">
 
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apod_title"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="16dp"
+                android:gravity="center"
+                android:text="@string/apod_title"
+                android:textSize="24sp" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/apod_title"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="16dp"
-            android:gravity="center"
-            android:text="@string/apod_title"
-            android:textSize="24sp"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toTopOf="parent"/>
+        <androidx.appcompat.widget.AppCompatTextView
+                android:id="@+id/apod_description"
+                android:layout_width="match_parent"
+                android:layout_height="150dp"
+                android:layout_marginTop="16dp"
+                android:ellipsize="end"
+                android:textSize="18sp"
+                tools:text="@tools:sample/lorem/random" />
 
-    <androidx.appcompat.widget.AppCompatTextView
-            android:id="@+id/apod_description"
-            android:layout_width="0dp"
-            android:layout_height="150dp"
-            android:layout_marginTop="16dp"
-            tools:text="@string/placeholder_text"
-            android:textSize="18sp"
-            android:ellipsize="end"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@id/apod_title"/>
+        <androidx.appcompat.widget.AppCompatImageView
+                android:id="@+id/apod_image"
+                android:layout_width="wrap_content"
+                android:layout_height="250dp"
+                android:layout_marginTop="16dp"
+                tools:srcCompat="@tools:sample/backgrounds/scenic" />
 
-
-    <androidx.appcompat.widget.AppCompatButton
-            android:text="@string/read_more"
-            app:layout_constraintTop_toBottomOf="@id/apod_description"
-            app:layout_constraintEnd_toEndOf="parent"
-            style="@style/Widget.AppCompat.Button.Borderless.Colored"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:id="@+id/button_read_more"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-            android:layout_marginTop="16dp"
-            app:layout_constraintTop_toBottomOf="@id/button_read_more"
-            app:layout_constraintStart_toStartOf="parent"
-            android:layout_width="wrap_content"
-            app:layout_constraintEnd_toEndOf="parent"
-            android:layout_height="250dp"
-            tools:srcCompat="@tools:sample/backgrounds/scenic"
-            android:id="@+id/apod_image"/>
+        <TextView
+                android:text="@string/tap_image"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"/>
+    </LinearLayout>
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
