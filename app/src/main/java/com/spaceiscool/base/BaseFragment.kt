@@ -5,16 +5,15 @@ import android.net.Uri
 import android.view.View
 import android.widget.Toast
 import androidx.fragment.app.Fragment
-import kotlinx.android.synthetic.main.fragment_mars_photos.*
 
 open class BaseFragment : Fragment() {
 
     fun displayProgressBar() {
-        progressBar?.visibility = View.VISIBLE
+        //Do nothing
     }
 
     fun removeProgressBar() {
-        progressBar?.visibility = View.INVISIBLE
+        //Do nothing
     }
 
     fun displayError() {

@@ -4,43 +4,60 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.bumptech.glide.Glide
+import androidx.fragment.app.viewModels
 import com.spaceiscool.R
 import com.spaceiscool.base.BaseFragment
 import com.spaceiscool.data.APOD
-import kotlinx.android.synthetic.main.fragment_apod.*
+import com.spaceiscool.databinding.FragmentApodBinding
+import com.spaceiscool.main.APODViewModel
+import com.squareup.picasso.Picasso
 
-class APODFragment: BaseFragment(), APODContract.View {
+class APODFragment: BaseFragment() {
+    private var _binding: FragmentApodBinding? = null
+    private val binding get() = _binding!!
 
-    lateinit var presenter: APODPresenter
+    private val APODViewModel: APODViewModel by viewModels()
 
-    override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?, savedInstanceState: Bundle?): View? {
-        return inflater.inflate(R.layout.fragment_apod, container, false)
+    override fun onCreateView(
+        inflater: LayoutInflater,
+        container: ViewGroup?,
+        savedInstanceState: Bundle?
+    ): View {
+        _binding = FragmentApodBinding.inflate(inflater, container, false)
+        return binding.root
     }
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        presenter = APODPresenter(this)
-        presenter.getPhotoOfTheDay()
+        setupView()
     }
 
-    override fun showAPOD(apod: APOD) {
-        apod_title.text = apod.title
-        apod_description.text = apod.explanation
-
-        button_read_more.setOnClickListener {
-            //TODO: Display full description
+    private fun setupView() {
+        APODViewModel.apod.observe(viewLifecycleOwner) { apod ->
+            showAPOD(apod)
         }
 
-        apod_image.setOnClickListener {
-            displayPhotoInBrowser(apod.url)
+        APODViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
+            //TODO: Display error
         }
 
-        Glide.with(this)
+        APODViewModel.getPhotoOfTheDay()
+    }
+
+    private fun showAPOD(apod: APOD) {
+        binding.apply {
+            apodTitle.text = apod.title
+            apodDescription.text = apod.explanation
+
+            apodImage.setOnClickListener {
+                displayPhotoInBrowser(apod.url)
+            }
+        }
+
+        Picasso.get()
             .load(apod.url)
             .placeholder(R.drawable.mars_default)
-            .into(apod_image)
+            .into(binding.apodImage)
 
     }
 }
