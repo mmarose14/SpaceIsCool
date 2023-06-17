@@ -6,4 +6,5 @@
     <string name="apod_title">Astronomy Picture of the Day</string>
     <string name="read_more">Read More</string>
     <string name="tap_image">Tap Image to view in Browser</string>
+    <string name="apod_button">Photo of the Day</string>
 </resources>

@@ -2,10 +2,24 @@
 Display data from NASA API - https://api.nasa.gov/
 
 # Description
-This is a demo Kotlin app that uses an MVP architecture
+This is a demo Android app written in Kotlin that uses an MVVM architecture, and uses the NASA API
+to display data.
+Below are the libraries used. Some are still in progress and may not be fully implemented.
+Over time I will try to update the codebase to use more modern libraries and techniques.
+
+# Libraries Used
+- AndroidX
+- LiveData
+- ViewModel
+- Kotlin Coroutines
+- Kotlin Flow
+- Retrofit
+- Moshi
+- Hilt
+- Picasso
+
 
 # ToDo
-- Make Near-Earth Objects clickable to display more data
+- Modernize more of the codebase
 - Add tests
 - Add more features?
-- Change color scheme (currently looks boring)

@@ -7,11 +7,12 @@ import android.view.ViewGroup
 import androidx.fragment.app.viewModels
 import com.spaceiscool.R
 import com.spaceiscool.base.BaseFragment
-import com.spaceiscool.data.APOD
+import com.spaceiscool.data.model.APOD
 import com.spaceiscool.databinding.FragmentApodBinding
-import com.spaceiscool.main.APODViewModel
 import com.squareup.picasso.Picasso
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class APODFragment: BaseFragment() {
     private var _binding: FragmentApodBinding? = null
     private val binding get() = _binding!!
@@ -38,7 +39,7 @@ class APODFragment: BaseFragment() {
         }
 
         APODViewModel.errorMessage.observe(viewLifecycleOwner) { errorMessage ->
-            //TODO: Display error
+            binding.apodDescription.text = errorMessage
         }
 
         APODViewModel.getPhotoOfTheDay()
@@ -50,7 +51,7 @@ class APODFragment: BaseFragment() {
             apodDescription.text = apod.explanation
 
             apodImage.setOnClickListener {
-                displayPhotoInBrowser(apod.url)
+                displayInBrowser(apod.url)
             }
         }
 
@@ -58,6 +59,10 @@ class APODFragment: BaseFragment() {
             .load(apod.url)
             .placeholder(R.drawable.mars_default)
             .into(binding.apodImage)
+    }
 
+    override fun onDestroyView() {
+        super.onDestroyView()
+        _binding = null
     }
 }

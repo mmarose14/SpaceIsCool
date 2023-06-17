@@ -1,4 +1,4 @@
-package com.spaceiscool.data
+package com.spaceiscool.data.model
 
 import android.os.Parcelable
 import kotlinx.parcelize.Parcelize
@@ -7,7 +7,6 @@ import kotlinx.parcelize.Parcelize
 data class APOD(
     val date: String,
     val explanation: String,
-    val hdurl: String,
     val media_type: String,
     val service_version: String,
     val title: String,

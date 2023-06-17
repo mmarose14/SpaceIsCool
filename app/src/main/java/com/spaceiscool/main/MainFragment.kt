@@ -5,9 +5,9 @@ import android.os.Bundle
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.recyclerview.widget.LinearLayoutManager
 import com.spaceiscool.base.BaseFragment
 import com.spaceiscool.databinding.FragmentMainBinding
+import com.spaceiscool.neo.NEOActivity
 import com.spaceiscool.pictureoftheday.APODActivity
 
 class MainFragment : BaseFragment() {
@@ -33,6 +33,10 @@ class MainFragment : BaseFragment() {
         binding.apply {
             buttonApod.setOnClickListener {
                 startActivity(Intent(requireContext(), APODActivity::class.java))
+            }
+
+            buttonNeo.setOnClickListener {
+                startActivity(Intent(requireContext(), NEOActivity::class.java))
             }
         }
     }
