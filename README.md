@@ -8,18 +8,15 @@ Below are the libraries used. Some are still in progress and may not be fully im
 Over time I will try to update the codebase to use more modern libraries and techniques.
 
 # Libraries Used
+- Compose
 - AndroidX
-- LiveData
 - ViewModel
 - Kotlin Coroutines
-- Kotlin Flow
 - Retrofit
 - Moshi
 - Hilt
-- Picasso
-
 
 # ToDo
-- Modernize more of the codebase
+- Migrate to Compose
 - Add tests
 - Add more features?
