@@ -5,11 +5,9 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.viewModels
-import com.spaceiscool.R
 import com.spaceiscool.base.BaseFragment
 import com.spaceiscool.data.model.APOD
 import com.spaceiscool.databinding.FragmentApodBinding
-import com.squareup.picasso.Picasso
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -55,10 +53,10 @@ class APODFragment: BaseFragment() {
             }
         }
 
-        Picasso.get()
-            .load(apod.url)
-            .placeholder(R.drawable.mars_default)
-            .into(binding.apodImage)
+//        Picasso.get()
+//            .load(apod.url)
+//            .placeholder(R.drawable.mars_default)
+//            .into(binding.apodImage)
     }
 
     override fun onDestroyView() {
